@@ -15,4 +15,8 @@ typedef struct
     event_callback_t callback;
 } event_pair_t;
 
+void event_subscribe(char *name, event_callback_t callback);
+void event_emit(char *name);
+void event_scheduler();
+
 #endif /*EVENT_SCHEDULER_H_*/
