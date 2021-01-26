@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define EVENT_NAME_LENGTH 10
-#define EVENT_ARRAY_SIZE  10
+#define EVENT_DICTIONARY_SIZE  10
 
 typedef char event_name_t[EVENT_NAME_LENGTH];
 typedef void (*event_callback_t)(void *);
