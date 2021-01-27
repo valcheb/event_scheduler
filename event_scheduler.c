@@ -39,7 +39,7 @@ void event_subscribe(char *name, event_callback_t callback)
     }
     */
 
-    strncpy((char *)event_dictionary[idx].name, name, strlen(name));
+    strncpy((char *)event_dictionary[idx].name, name, EVENT_NAME_LENGTH);
     event_dictionary[idx].callback = callback;
     idx++;
 }
