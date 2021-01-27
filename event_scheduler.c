@@ -10,7 +10,7 @@ static event_pair_t event_dictionary[EVENT_DICTIONARY_SIZE];
 static event_order_ring_t event_order_ring;
 static event_name_t event_names[EVENT_DICTIONARY_SIZE];
 
-void event_subscribe(char *name, event_callback_t callback)
+void event_subscribe(const char *name, event_callback_t callback)
 {
     static uint16_t idx = 0;
 
@@ -44,7 +44,7 @@ void event_subscribe(char *name, event_callback_t callback)
     idx++;
 }
 
-void event_emit(char *name)
+void event_emit(const char *name)
 {
     if (strlen(name) < EVENT_NAME_LENGTH)
     {

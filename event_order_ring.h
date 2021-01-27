@@ -23,7 +23,7 @@ inline static void eor_init(event_order_ring_t *ring, event_name_t *src_buf, uin
     ring->size         = size;
 }
 
-inline static void eor_push(event_order_ring_t *ring, char *name)
+inline static void eor_push(event_order_ring_t *ring, const char *name)
 {
     strncpy(ring->buffer[ring->in], name, EVENT_NAME_LENGTH);
     ring->current_size++;
