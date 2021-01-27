@@ -46,24 +46,19 @@ void event_subscribe(const char *name, event_callback_t callback)
 
 void event_emit(const char *name)
 {
-    if (strlen(name) < EVENT_NAME_LENGTH)
-    {
-        if (!eor_is_full(&event_order_ring))
-        {
-            eor_push(&event_order_ring, name);
-        }
-        else
-        {
-            printf("Emit error: queue is full\n");
-            exit(1);
-        }
-    }
-    else
+    if (strlen(name) >= EVENT_NAME_LENGTH)
     {
         printf("Emit error: event name is too long\n");
         exit(1);
     }
 
+    if (eor_is_full(&event_order_ring))
+    {
+        printf("Emit error: queue is full\n");
+        exit(1);
+    }
+
+    eor_push(&event_order_ring, name);
 }
 
 static uint16_t event_find(event_name_t event, uint16_t search_idx)
