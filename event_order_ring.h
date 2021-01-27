@@ -25,7 +25,7 @@ inline static void eor_init(event_order_ring_t *ring, event_name_t *src_buf, uin
 
 inline static void eor_push(event_order_ring_t *ring, char *name)
 {
-    strncpy((char *)ring->buffer[ring->in], name, EVENT_NAME_LENGTH);
+    strncpy(ring->buffer[ring->in], name, EVENT_NAME_LENGTH);
     ring->current_size++;
 
     ring->in++;
@@ -37,7 +37,7 @@ inline static void eor_push(event_order_ring_t *ring, char *name)
 
 inline static void eor_pop(event_order_ring_t *ring, event_name_t name)
 {
-    strncpy((char*)name, (char *)ring->buffer[ring->out], EVENT_NAME_LENGTH);
+    strncpy(name, ring->buffer[ring->out], EVENT_NAME_LENGTH);
     ring->current_size--;
 
     ring->out++;
