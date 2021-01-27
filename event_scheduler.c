@@ -10,14 +10,14 @@ static event_pair_t event_dictionary[EVENT_DICTIONARY_SIZE];
 static event_order_ring_t event_order_ring;
 static event_name_t event_names[EVENT_DICTIONARY_SIZE];
 
+void event_scheduler_init()
+{
+    eor_init(&event_order_ring, event_names, EVENT_DICTIONARY_SIZE);
+}
+
 void event_subscribe(const char *name, event_callback_t callback)
 {
     static uint16_t idx = 0;
-
-    if (event_order_ring.size == 0)
-    {
-        eor_init(&event_order_ring, event_names, EVENT_DICTIONARY_SIZE);
-    }
 
     if (idx >= EVENT_DICTIONARY_SIZE)
     {

@@ -15,6 +15,7 @@ typedef struct
     event_callback_t callback;
 } event_pair_t;
 
+void event_scheduler_init();
 void event_subscribe(const char *name, event_callback_t callback);
 void event_emit(const char *name);
 void event_scheduler();

@@ -13,6 +13,7 @@ static void second_callback(void *param)
 
 int main()
 {
+    event_scheduler_init();
     event_subscribe("first", first_callback);
     event_subscribe("first", second_callback);
     event_subscribe("second", second_callback);
