@@ -80,12 +80,12 @@ void event_scheduler()
     static uint16_t search_idx = 0;
     static event_name_t event = "\0";
 
-    if ( (strcmp(event, "\0") == 0) && !eor_is_empty(&event_order_ring))
+    if ( (event[0] == '\0') && !eor_is_empty(&event_order_ring))
     {
         eor_pop(&event_order_ring, event);
     }
 
-    if (strcmp(event, "\0") != 0)
+    if (event[0] != '\0')
     {
         search_idx = event_find(event, search_idx);
 
